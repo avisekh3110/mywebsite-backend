@@ -8,7 +8,7 @@ const PORT = 8080 || process.env.PORT;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://avisekh.vercel.app/"],
+    origin: ["http://localhost:5173", "https://avisekh.vercel.app"],
   })
 );
 app.use(bodyParser.urlencoded({ extended: true }));
