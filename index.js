@@ -23,9 +23,9 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   const { name, email, message } = req.body;
   sendMail(email, message, name);
-  res.send(`mail sent to ${process.env.ADMIN_EMAIL}`);
-  res.send(`mail sent to ${process.env.EMAIL}`);
-  res.send(`mail sent to ${process.env.PASS}`);
+  res.send(
+    `mail sent to ${process.env.ADMIN_EMAIL} ${process.env.GMAIL} ${process.env.PASS}`
+  );
 });
 
 app.listen(PORT, () => {
