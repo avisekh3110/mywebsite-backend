@@ -1,19 +1,21 @@
 const nodemailer = require("nodemailer");
 
+require("dotenv").config({ override: true });
+
 const transporter = nodemailer.createTransport({
   secure: true,
   host: "smtp.gmail.com",
   port: 465,
   auth: {
-    user: "testmail31102003@gmail.com",
-    pass: "qghfrouqhanyavpb",
+    user: process.env.GMAIL,
+    pass: process.env.PASS,
   },
 });
 
 const sendMail = (to, msg, name) => {
   transporter.sendMail({
     from: "testmail31102003@gmail.com",
-    to: [to, "avisekh.sabi31102003@gmail.com"],
+    to: [to, `${process.env.ADMIN_EMAIL}`],
     subject: `Hello!! ${name}`,
     html: `<!DOCTYPE html>
       <html lang="en">
@@ -70,10 +72,10 @@ const sendMail = (to, msg, name) => {
         <div class="container">
           <div class="header">Hello, ${name} 👋</div>
           <div class="content">
-            <p class="msg">
+            <p>
             This is the message you have sent: ${msg}
             </p>
-            <p>We hope you’re having a great day!</p>
+            <p>Email: ${to}</p><br/>
             <a href="https://avisekh.vercel.app/" class="button">Visit Website</a>
           </div>
           <div class="footer">
